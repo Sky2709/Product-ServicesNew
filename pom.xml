@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.akash</groupId>
-    <artifactId>productServicesN</artifactId>
+    <artifactId>productServicesNew</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Product ServicesN</name>
     <description>Product ServicesN</description>
