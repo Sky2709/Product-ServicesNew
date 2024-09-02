@@ -1,8 +1,8 @@
-package com.akash.productservicesn.controllers;
+package com.akash.productservicesnew.controllers;
 
-import com.akash.productservicesn.dtos.ProductDTO;
-import com.akash.productservicesn.exceptions.NotFoundException;
-import com.akash.productservicesn.services.ProductService;
+import com.akash.productservicesnew.dtos.ProductDTO;
+import com.akash.productservicesnew.exceptions.NotFoundException;
+import com.akash.productservicesnew.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,15 +37,15 @@ public class ProductController {
         return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/categories")
-    public List<String> getAllCategories() {
-        return productService.getAllCategories();
-    }
+//    @GetMapping("/categories")
+//    public List<String> getAllCategories() {
+//        return productService.getAllCategories();
+//    }
 
-    @GetMapping("/category/{name}")
-    public List<ProductDTO> getAllProductsInCategory(@PathVariable("name") String name) {
-        return productService.getAllProductsInCategory(name);
-    }
+//    @GetMapping("/category/{name}")
+//    public List<ProductDTO> getAllProductsInCategory(@PathVariable("name") String name) {
+//        return productService.getAllProductsInCategory(name);
+//    }
 
 
     @PostMapping()

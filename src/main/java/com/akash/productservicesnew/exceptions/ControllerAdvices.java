@@ -1,6 +1,6 @@
-package com.akash.productservicesn.exceptions;
+package com.akash.productservicesnew.exceptions;
 
-import com.akash.productservicesn.dtos.ExceptionDTO;
+import com.akash.productservicesnew.dtos.ExceptionDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,4 +1,4 @@
-package com.akash.productservicesn.models;
+package com.akash.productservicesnew.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;

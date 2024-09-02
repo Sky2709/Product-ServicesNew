@@ -1,6 +1,6 @@
-package com.akash.productservicesn.repositories;
+package com.akash.productservicesnew.repositories;
 
-import com.akash.productservicesn.models.Product;
+import com.akash.productservicesnew.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

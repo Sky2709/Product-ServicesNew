@@ -1,7 +1,7 @@
-package com.akash.productservicesn.services;
+package com.akash.productservicesnew.services;
 
-import com.akash.productservicesn.dtos.ProductDTO;
-import com.akash.productservicesn.exceptions.NotFoundException;
+import com.akash.productservicesnew.dtos.ProductDTO;
+import com.akash.productservicesnew.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.akash.productservicesn.services;
+package com.akash.productservicesnew.services;
 
-import com.akash.productservicesn.exceptions.NotFoundException;
-import com.akash.productservicesn.thirdPartyClients.fakeStore.FakeStoreProductDTO;
-import com.akash.productservicesn.thirdPartyClients.fakeStore.FakeStoreProductServiceClient;
-import com.akash.productservicesn.dtos.ProductDTO;
+import com.akash.productservicesnew.exceptions.NotFoundException;
+import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductDTO;
+import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductServiceClient;
+import com.akash.productservicesnew.dtos.ProductDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,9 +37,7 @@ public class FakeStoreProductService implements ProductService {
     public List<String> getAllCategories() {
         List<String> categoryList = new ArrayList<>();
         List<String> fakeStoreCategoryList = fakeStoreProductServiceClient.getAllCategories();
-        for (String category : fakeStoreCategoryList) {
-            categoryList.add(category);
-        }
+        categoryList.addAll(fakeStoreCategoryList);
         return categoryList;
     }
 

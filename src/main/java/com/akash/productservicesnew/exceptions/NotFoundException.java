@@ -1,4 +1,4 @@
-package com.akash.productservicesn.exceptions;
+package com.akash.productservicesnew.exceptions;
 
 public class NotFoundException extends Exception{
 

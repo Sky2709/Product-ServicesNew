@@ -1,13 +1,13 @@
-package com.akash.productservicesn;
+package com.akash.productservicesnew;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductServicesNApplication {
+public class ProductServicesNewApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductServicesNApplication.class, args);
+        SpringApplication.run(ProductServicesNewApplication.class, args);
     }
 
 }

@@ -1,10 +1,9 @@
-package com.akash.productservicesn.thirdPartyClients.fakeStore;
+package com.akash.productservicesnew.thirdPartyClients.fakeStore;
 
-import com.akash.productservicesn.dtos.ProductDTO;
-import com.akash.productservicesn.exceptions.NotFoundException;
+import com.akash.productservicesnew.dtos.ProductDTO;
+import com.akash.productservicesnew.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class FakeStoreProductServiceClient {

@@ -1,4 +1,4 @@
-package com.akash.productservicesn;
+package com.akash.productservicesnew;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

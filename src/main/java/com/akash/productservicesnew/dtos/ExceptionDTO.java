@@ -1,4 +1,4 @@
-package com.akash.productservicesn.dtos;
+package com.akash.productservicesnew.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
