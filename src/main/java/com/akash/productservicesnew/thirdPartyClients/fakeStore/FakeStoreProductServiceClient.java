@@ -1,6 +1,6 @@
 package com.akash.productservicesnew.thirdPartyClients.fakeStore;
 
-import com.akash.productservicesnew.dtos.ProductDTO;
+import com.akash.productservicesnew.dtos.GenericProductDTO;
 import com.akash.productservicesnew.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -68,15 +68,15 @@ public class FakeStoreProductServiceClient {
 //        return Arrays.stream(response.getBody()).toList();
 //    }
 
-    public FakeStoreProductDTO addNewProduct(ProductDTO productDTO) {
+    public FakeStoreProductDTO addNewProduct(GenericProductDTO genericProductDTO) {
         RestTemplate restTemplate = restTemplateBuilder.build();
-        ResponseEntity<FakeStoreProductDTO> response = restTemplate.postForEntity(productRequestURL, productDTO, FakeStoreProductDTO.class);
+        ResponseEntity<FakeStoreProductDTO> response = restTemplate.postForEntity(productRequestURL, genericProductDTO, FakeStoreProductDTO.class);
         return response.getBody();
     }
 
-    public FakeStoreProductDTO updateProduct(ProductDTO productDTO, Long id) throws NotFoundException {
+    public FakeStoreProductDTO updateProduct(GenericProductDTO genericProductDTO, Long id) throws NotFoundException {
         RestTemplate restTemplate= restTemplateBuilder.build();
-        HttpEntity<ProductDTO> request = new HttpEntity<>(productDTO);
+        HttpEntity<GenericProductDTO> request = new HttpEntity<>(genericProductDTO);
         ResponseEntity<FakeStoreProductDTO> response= restTemplate.exchange(
                 productRequestByIDURL,
                 HttpMethod.PUT,

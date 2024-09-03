@@ -2,11 +2,9 @@ package com.akash.productservicesnew.services.fakeStoreService;
 
 import com.akash.productservicesnew.exceptions.NotFoundException;
 
-import com.akash.productservicesnew.services.ProductService;
-
 import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductDTO;
 import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductServiceClient;
-import com.akash.productservicesnew.dtos.ProductDTO;
+import com.akash.productservicesnew.dtos.GenericProductDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,17 +27,17 @@ public class FakeStoreProductService implements ProductService {
 //    }
 
     @Override
-    public List<ProductDTO> getAllProducts() {
-        List<ProductDTO> productDTOList = new ArrayList<>();
+    public List<GenericProductDTO> getAllProducts() {
+        List<GenericProductDTO> genericProductDTOList = new ArrayList<>();
         List<FakeStoreProductDTO> fakeStoreProductDTOList = fakeStoreProductServiceClient.getAllProducts();
         for (FakeStoreProductDTO fakeStoreProductDTO : fakeStoreProductDTOList) {
-            productDTOList.add(converter(fakeStoreProductDTO));
+            genericProductDTOList.add(converter(fakeStoreProductDTO));
         }
-        return productDTOList;
+        return genericProductDTOList;
     }
 
     @Override
-    public ProductDTO getProductById(Long id) throws NotFoundException {
+    public GenericProductDTO getProductById(Long id) throws NotFoundException {
         return converter(fakeStoreProductServiceClient.getProductById(id));
     }
 
@@ -62,28 +60,28 @@ public class FakeStoreProductService implements ProductService {
 //    }
 
     @Override
-    public ProductDTO addNewProduct(ProductDTO productDTO) {
-        return converter(fakeStoreProductServiceClient.addNewProduct(productDTO));
+    public GenericProductDTO addNewProduct(GenericProductDTO genericProductDTO) {
+        return converter(fakeStoreProductServiceClient.addNewProduct(genericProductDTO));
     }
 
     @Override
-    public ProductDTO updateProduct(ProductDTO productDTO, Long id) throws NotFoundException {
-        return converter(fakeStoreProductServiceClient.updateProduct(productDTO, id));
+    public GenericProductDTO updateProduct(GenericProductDTO genericProductDTO, Long id) throws NotFoundException {
+        return converter(fakeStoreProductServiceClient.updateProduct(genericProductDTO, id));
     }
 
     @Override
-    public ProductDTO deleteProduct(Long id) throws NotFoundException {
+    public GenericProductDTO deleteProduct(Long id) throws NotFoundException {
         return converter(fakeStoreProductServiceClient.deleteProduct(id));
     }
 
-    private ProductDTO converter(FakeStoreProductDTO fakeStoreProductDTO) {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(fakeStoreProductDTO.getId());
-        productDTO.setTitle(fakeStoreProductDTO.getTitle());
-        productDTO.setPrice(fakeStoreProductDTO.getPrice());
-        productDTO.setCategory(fakeStoreProductDTO.getCategory());
-        productDTO.setDescription(fakeStoreProductDTO.getDescription());
-        productDTO.setImage(fakeStoreProductDTO.getImage());
-        return productDTO;
+    private GenericProductDTO converter(FakeStoreProductDTO fakeStoreProductDTO) {
+        GenericProductDTO genericProductDTO = new GenericProductDTO();
+        genericProductDTO.setId(fakeStoreProductDTO.getId());
+        genericProductDTO.setTitle(fakeStoreProductDTO.getTitle());
+        genericProductDTO.setPrice(fakeStoreProductDTO.getPrice());
+        genericProductDTO.setCategory(fakeStoreProductDTO.getCategory());
+        genericProductDTO.setDescription(fakeStoreProductDTO.getDescription());
+        genericProductDTO.setImage(fakeStoreProductDTO.getImage());
+        return genericProductDTO;
     }
 }

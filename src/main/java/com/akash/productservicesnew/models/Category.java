@@ -1,7 +1,6 @@
 package com.akash.productservicesnew.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -14,6 +13,6 @@ import java.util.List;
 @Entity
 public class Category extends BaseModel{
     private String name;
-    @OneToMany(mappedBy = "category", targetEntity = Product.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 }

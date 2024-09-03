@@ -1,7 +1,7 @@
 package com.akash.productservicesnew.controllers;
 
-import com.akash.productservicesnew.dtos.ProductDTO;
-import com.akash.productservicesnew.services.CategoryService;
+import com.akash.productservicesnew.dtos.GenericProductDTO;
+import com.akash.productservicesnew.services.fakeStoreService.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{name}")
-    public List<ProductDTO> getAllProductsInCategory(@PathVariable("name") String name) {
+    public List<GenericProductDTO> getAllProductsInCategory(@PathVariable("name") String name) {
         return categoryService.getAllProductsInCategory(name);
     }
 

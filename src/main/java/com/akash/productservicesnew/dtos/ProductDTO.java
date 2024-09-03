@@ -1,15 +1,16 @@
 package com.akash.productservicesnew.dtos;
 
+import com.akash.productservicesnew.models.Category;
+import com.akash.productservicesnew.models.Price;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 public class ProductDTO {
-    private Long id;
     private String title;
-    private double price;
-    private String category;
     private String description;
     private String image;
+    private Category category;
+    private Price price;
 }

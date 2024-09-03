@@ -1,7 +1,6 @@
 package com.akash.productservicesnew.services.fakeStoreService;
 
-import com.akash.productservicesnew.dtos.ProductDTO;
-import com.akash.productservicesnew.services.CategoryService;
+import com.akash.productservicesnew.dtos.GenericProductDTO;
 import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreCategoryServiceClient;
 import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductDTO;
 import org.springframework.stereotype.Service;
@@ -26,24 +25,24 @@ public class FakeStoreCategoryService implements CategoryService {
     }
 
     @Override
-    public List<ProductDTO> getAllProductsInCategory(String name) {
-        List<ProductDTO> productDTOList = new ArrayList<>();
+    public List<GenericProductDTO> getAllProductsInCategory(String name) {
+        List<GenericProductDTO> genericProductDTOList = new ArrayList<>();
         List<FakeStoreProductDTO> fakeStoreProductDTOList = fakeStoreCategoryServiceClient.getAllProductsInCategory(name);
         for (FakeStoreProductDTO fakeStoreProductDTO : fakeStoreProductDTOList) {
-            productDTOList.add(converter(fakeStoreProductDTO));
+            genericProductDTOList.add(converter(fakeStoreProductDTO));
         }
-        return productDTOList;
+        return genericProductDTOList;
     }
 
-    private ProductDTO converter(FakeStoreProductDTO fakeStoreProductDTO) {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(fakeStoreProductDTO.getId());
-        productDTO.setTitle(fakeStoreProductDTO.getTitle());
-        productDTO.setPrice(fakeStoreProductDTO.getPrice());
-        productDTO.setCategory(fakeStoreProductDTO.getCategory());
-        productDTO.setDescription(fakeStoreProductDTO.getDescription());
-        productDTO.setImage(fakeStoreProductDTO.getImage());
-        return productDTO;
+    private GenericProductDTO converter(FakeStoreProductDTO fakeStoreProductDTO) {
+        GenericProductDTO genericProductDTO = new GenericProductDTO();
+        genericProductDTO.setId(fakeStoreProductDTO.getId());
+        genericProductDTO.setTitle(fakeStoreProductDTO.getTitle());
+        genericProductDTO.setPrice(fakeStoreProductDTO.getPrice());
+        genericProductDTO.setCategory(fakeStoreProductDTO.getCategory());
+        genericProductDTO.setDescription(fakeStoreProductDTO.getDescription());
+        genericProductDTO.setImage(fakeStoreProductDTO.getImage());
+        return genericProductDTO;
     }
 
 
