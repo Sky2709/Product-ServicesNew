@@ -1,4 +1,4 @@
-package com.akash.productservicesnew.controllers;
+package com.akash.productservicesnew.controllers.fakeStore;
 
 import com.akash.productservicesnew.dtos.GenericProductDTO;
 import com.akash.productservicesnew.services.fakeStoreService.CategoryService;
