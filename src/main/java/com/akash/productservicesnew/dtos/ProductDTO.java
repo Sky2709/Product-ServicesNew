@@ -12,7 +12,7 @@ public class ProductDTO {
     private String title;
     private String description;
     private String image;
-    @JsonBackReference // This is used to break the infinite recursion while serializing the object
+    @JsonBackReference
     private Category category;
     private Price price;
 }

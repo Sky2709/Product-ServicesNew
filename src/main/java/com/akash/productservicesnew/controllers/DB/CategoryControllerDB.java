@@ -2,8 +2,8 @@ package com.akash.productservicesnew.controllers.DB;
 
 import com.akash.productservicesnew.dtos.CategoryDTO;
 import com.akash.productservicesnew.dtos.ProductDTO;
-import com.akash.productservicesnew.models.Category;
 import com.akash.productservicesnew.services.DB.CategoryServiceDB;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ public class CategoryControllerDB {
         this.categoryServiceDB = categoryServiceDB;
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         return ResponseEntity.ok(categoryServiceDB.getAllCategories());
     }
@@ -28,9 +28,10 @@ public class CategoryControllerDB {
         return ResponseEntity.ok(categoryServiceDB.getCategory(categoryUUID));
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryDTO categoryDTO) {
-        return ResponseEntity.ok(categoryServiceDB.createCategory(categoryDTO));
+    @PostMapping(value="/create", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> createCategory(@RequestBody CategoryDTO categoryDTO) {
+        categoryServiceDB.createCategory(categoryDTO);
+        return new ResponseEntity<>("Category created successfully", HttpStatus.CREATED);
     }
 
 

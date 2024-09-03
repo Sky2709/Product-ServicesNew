@@ -38,10 +38,10 @@ public class CategoryServiceDBImpl implements CategoryServiceDB {
     }
 
     @Override
-    public Category createCategory(CategoryDTO categoryDTO) {
+    public void createCategory(CategoryDTO categoryDTO) {
         Category category = new Category();
         category.setName(categoryDTO.getName());
-        return categoryRepository.save(category);
+        categoryRepository.save(category);
     }
 
     @Override
