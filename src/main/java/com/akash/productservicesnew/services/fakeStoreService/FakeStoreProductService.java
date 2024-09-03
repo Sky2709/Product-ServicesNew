@@ -1,6 +1,9 @@
-package com.akash.productservicesnew.services;
+package com.akash.productservicesnew.services.fakeStoreService;
 
 import com.akash.productservicesnew.exceptions.NotFoundException;
+
+import com.akash.productservicesnew.services.ProductService;
+
 import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductDTO;
 import com.akash.productservicesnew.thirdPartyClients.fakeStore.FakeStoreProductServiceClient;
 import com.akash.productservicesnew.dtos.ProductDTO;
@@ -12,11 +15,18 @@ import java.util.List;
 @Service
 public class FakeStoreProductService implements ProductService {
 
-    private FakeStoreProductServiceClient fakeStoreProductServiceClient;
+    private final FakeStoreProductServiceClient fakeStoreProductServiceClient;
+//    private FakeStoreCategoryServiceClient fakeStoreCategoryServiceClient;
 
     public FakeStoreProductService(FakeStoreProductServiceClient fakeStoreProductServiceClient) {
         this.fakeStoreProductServiceClient = fakeStoreProductServiceClient;
     }
+
+//    public FakeStoreProductService(FakeStoreProductServiceClient fakeStoreProductServiceClient,
+//                                   FakeStoreCategoryServiceClient fakeStoreCategoryServiceClient) {
+//        this.fakeStoreProductServiceClient = fakeStoreProductServiceClient;
+//        this.fakeStoreCategoryServiceClient = fakeStoreCategoryServiceClient;
+//    }
 
     @Override
     public List<ProductDTO> getAllProducts() {
@@ -33,23 +43,23 @@ public class FakeStoreProductService implements ProductService {
         return converter(fakeStoreProductServiceClient.getProductById(id));
     }
 
-    @Override
-    public List<String> getAllCategories() {
-        List<String> categoryList = new ArrayList<>();
-        List<String> fakeStoreCategoryList = fakeStoreProductServiceClient.getAllCategories();
-        categoryList.addAll(fakeStoreCategoryList);
-        return categoryList;
-    }
-
-    @Override
-    public List<ProductDTO> getAllProductsInCategory(String name) {
-        List<ProductDTO> productDTOList = new ArrayList<>();
-        List<FakeStoreProductDTO> fakeStoreProductDTOList = fakeStoreProductServiceClient.getAllProductsInCategory(name);
-        for (FakeStoreProductDTO fakeStoreProductDTO : fakeStoreProductDTOList) {
-            productDTOList.add(converter(fakeStoreProductDTO));
-        }
-        return productDTOList;
-    }
+//    @Override
+//    public List<String> getAllCategories() {
+//        List<String> categoryList = new ArrayList<>();
+//        List<String> fakeStoreCategoryList = fakeStoreCategoryServiceClient.getAllCategories();
+//        categoryList.addAll(fakeStoreCategoryList);
+//        return categoryList;
+//    }
+//
+//    @Override
+//    public List<ProductDTO> getAllProductsInCategory(String name) {
+//        List<ProductDTO> productDTOList = new ArrayList<>();
+//        List<FakeStoreProductDTO> fakeStoreProductDTOList = fakeStoreCategoryServiceClient.getAllProductsInCategory(name);
+//        for (FakeStoreProductDTO fakeStoreProductDTO : fakeStoreProductDTOList) {
+//            productDTOList.add(converter(fakeStoreProductDTO));
+//        }
+//        return productDTOList;
+//    }
 
     @Override
     public ProductDTO addNewProduct(ProductDTO productDTO) {

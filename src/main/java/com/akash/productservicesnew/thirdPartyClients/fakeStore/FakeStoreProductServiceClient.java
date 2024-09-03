@@ -12,22 +12,23 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FakeStoreProductServiceClient {
 
-    private RestTemplateBuilder restTemplateBuilder;
+    private final RestTemplateBuilder restTemplateBuilder;
 
-    @Value("${fakeStore.api.url}")
-    private String fakeStoreURl;
-
-    @Value("${fakeStore.api.paths.products}")
-    private String fakeStoreProductsURL;
+//    @Value("${fakeStore.api.url}")
+//    private String fakeStoreURl;
+//
+//    @Value("${fakeStore.api.paths.products}")
+//    private String fakeStoreProductsURL;
 
     private final String productRequestURL;
     private final String productRequestByIDURL;
-    private final String allCategories;
-    private final String productsInCategory;
+//    private final String allCategories;
+//    private final String productsInCategory;
 
     public FakeStoreProductServiceClient(RestTemplateBuilder restTemplateBuilder,
                                          @Value("${fakeStore.api.url}") String fakeStoreURl,
@@ -35,14 +36,14 @@ public class FakeStoreProductServiceClient {
         this.restTemplateBuilder = restTemplateBuilder;
         this.productRequestURL = fakeStoreURl + fakeStoreProductsURL;
         this.productRequestByIDURL = fakeStoreURl + fakeStoreProductsURL + "/{id}";
-        this.allCategories = fakeStoreURl + fakeStoreProductsURL + "/categories";
-        this.productsInCategory = fakeStoreURl + fakeStoreProductsURL + "/category/{name}";
+//        this.allCategories = fakeStoreURl + fakeStoreProductsURL + "/categories";
+//        this.productsInCategory = fakeStoreURl + fakeStoreProductsURL + "/category/{name}";
     }
 
     public List<FakeStoreProductDTO> getAllProducts() {
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<FakeStoreProductDTO[]> response = restTemplate.getForEntity(productRequestURL, FakeStoreProductDTO[].class);
-        return Arrays.stream(response.getBody()).toList();
+        return Arrays.stream(Objects.requireNonNull(response.getBody())).toList();
     }
 
     public FakeStoreProductDTO getProductById(Long id) throws NotFoundException {
@@ -55,17 +56,17 @@ public class FakeStoreProductServiceClient {
         return fakeStoreProductDTO;
     }
 
-    public List<String> getAllCategories() {
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        ResponseEntity<String[]> response = restTemplate.getForEntity(allCategories, String[].class);
-        return Arrays.stream(response.getBody()).toList();
-    }
-
-    public List<FakeStoreProductDTO> getAllProductsInCategory(String name) {
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        ResponseEntity<FakeStoreProductDTO[]> response = restTemplate.getForEntity(productsInCategory, FakeStoreProductDTO[].class, name);
-        return Arrays.stream(response.getBody()).toList();
-    }
+//    public List<String> getAllCategories() {
+//        RestTemplate restTemplate = restTemplateBuilder.build();
+//        ResponseEntity<String[]> response = restTemplate.getForEntity(allCategories, String[].class);
+//        return Arrays.stream(response.getBody()).toList();
+//    }
+//
+//    public List<FakeStoreProductDTO> getAllProductsInCategory(String name) {
+//        RestTemplate restTemplate = restTemplateBuilder.build();
+//        ResponseEntity<FakeStoreProductDTO[]> response = restTemplate.getForEntity(productsInCategory, FakeStoreProductDTO[].class, name);
+//        return Arrays.stream(response.getBody()).toList();
+//    }
 
     public FakeStoreProductDTO addNewProduct(ProductDTO productDTO) {
         RestTemplate restTemplate = restTemplateBuilder.build();

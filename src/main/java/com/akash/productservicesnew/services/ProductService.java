@@ -12,9 +12,9 @@ public interface ProductService {
 
     ProductDTO getProductById(Long id) throws NotFoundException;
 
-    List<String> getAllCategories();
-
-    List<ProductDTO> getAllProductsInCategory(String name);
+//    List<String> getAllCategories();
+//
+//    List<ProductDTO> getAllProductsInCategory(String name);
 
     ProductDTO addNewProduct(ProductDTO productDTO);
 
